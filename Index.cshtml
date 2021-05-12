@@ -1,0 +1,72 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <style>
+        .radar {
+            align-content: center;
+            border-color: black;
+            border-width: thick;
+        }
+
+        .pos1 {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .pos2 {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .pos3 {
+            position: absolute;
+            z-index: 3;
+        }
+
+        .pos4 {
+            position: absolute;
+            z-index: 4;
+        }
+
+        .pos5 {
+            position: absolute;
+            z-index: 5;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var images = [], x = -1;
+        images[0] = "Images/IDR664.T.202105120306.png";
+        images[1] = "Images/IDR664.T.202105120312.png";
+        images[2] = "Images/IDR664.T.202105120318.png";
+        images[3] = "Images/IDR664.T.202105120324.png";
+
+        function displayNextImage() {
+            x = (x === images.length - 1) ? 0 : x + 1;
+            document.getElementById("img").src = images[x];
+        }
+
+        function startTimer() {
+            setInterval(displayNextImage, 300);
+        }
+
+    </script>
+</head>
+<body onload="startTimer()">
+    <div class="radar">
+        <h1>Radar</h1>
+
+        <img class="pos1" src="Images/IDR664.background.png">
+        <img class="pos2" src="Images/IDR664.topography.png">
+        <img class="pos3" src="Images/IDR664.locations.png">
+
+        <!--Radar-->
+        <img class="pos4" id="img">
+
+        <img class="pos5" src="Images/IDR664.range.png">
+    </div>
+</body>
